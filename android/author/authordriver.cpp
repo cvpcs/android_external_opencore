@@ -20,6 +20,7 @@
 
 #include <unistd.h>
 #include <media/thread_init.h>
+#include <media/MediaProfiles.h>
 #include <surfaceflinger/ISurface.h>
 #include <camera/ICamera.h>
 #include <cutils/properties.h> // for property_get
@@ -120,6 +121,7 @@ AuthorDriver::AuthorDriver()
     iIsInDevice(false),
     iMaxFileSize(0)
 {
+    mMediaProfiles = MediaProfiles::getInstance();
     mSyncSem = new OsclSemaphore();
     mSyncSem->Create();
 
@@ -1268,7 +1270,9 @@ static void getSupportedVideoFrameHeightRange(video_encoder encoder, int64& minH
 void AuthorDriver::clipVideoBitrate()
 {
     int64 minBitrate, maxBitrate;
-    getSupportedVideoBitRateRange(mVideoEncoder, minBitrate, maxBitrate);
+//    getSupportedVideoBitRateRange(mVideoEncoder, minBitrate, maxBitrate);
+    minBitrate = mMediaProfiles->getVideoEncoderParamByName("enc.vid.bps.min", mVideoEncoder);
+    maxBitrate = mMediaProfiles->getVideoEncoderParamByName("enc.vid.bps.max", mVideoEncoder);
     if (mVideo_bitrate_setting < minBitrate) {
         LOGW("Intended video encoding bit rate (%d bps) is too small and will be set to (%lld bps)", mVideo_bitrate_setting, minBitrate);
         mVideo_bitrate_setting = minBitrate;
@@ -1281,7 +1285,9 @@ void AuthorDriver::clipVideoBitrate()
 void AuthorDriver::clipVideoFrameRate()
 {
     int64 minFrameRate, maxFrameRate;
-    getSupportedVideoFrameRateRange(mVideoEncoder, minFrameRate, maxFrameRate);
+//    getSupportedVideoFrameRateRange(mVideoEncoder, minFrameRate, maxFrameRate);
+    minFrameRate = mMediaProfiles->getVideoEncoderParamByName("enc.vid.fps.min", mVideoEncoder);
+    maxFrameRate = mMediaProfiles->getVideoEncoderParamByName("enc.vid.fps.max", mVideoEncoder);
     if (mVideoFrameRate < minFrameRate) {
         LOGW("Intended video encoding frame rate (%d fps) is too small and will be set to (%lld fps)", mVideoFrameRate, minFrameRate);
         mVideoFrameRate = minFrameRate;
@@ -1294,7 +1300,9 @@ void AuthorDriver::clipVideoFrameRate()
 void AuthorDriver::clipVideoFrameWidth()
 {
     int64 minFrameWidth, maxFrameWidth;
-    getSupportedVideoFrameWidthRange(mVideoEncoder, minFrameWidth, maxFrameWidth);
+//    getSupportedVideoFrameWidthRange(mVideoEncoder, minFrameWidth, maxFrameWidth);
+    minFrameWidth = mMediaProfiles->getVideoEncoderParamByName("enc.vid.width.min", mVideoEncoder);
+    maxFrameWidth = mMediaProfiles->getVideoEncoderParamByName("enc.vid.width.max", mVideoEncoder);
     if (mVideoWidth < minFrameWidth) {
         LOGW("Intended video encoding frame width (%d) is too small and will be set to (%lld)", mVideoWidth, minFrameWidth);
         mVideoWidth = minFrameWidth;
@@ -1307,7 +1315,9 @@ void AuthorDriver::clipVideoFrameWidth()
 void AuthorDriver::clipVideoFrameHeight()
 {
     int64 minFrameHeight, maxFrameHeight;
-    getSupportedVideoFrameHeightRange(mVideoEncoder, minFrameHeight, maxFrameHeight);
+//    getSupportedVideoFrameHeightRange(mVideoEncoder, minFrameHeight, maxFrameHeight);
+    minFrameHeight = mMediaProfiles->getVideoEncoderParamByName("enc.vid.height.min", mVideoEncoder);
+    maxFrameHeight = mMediaProfiles->getVideoEncoderParamByName("enc.vid.height.max", mVideoEncoder);
     if (mVideoHeight < minFrameHeight) {
         LOGW("Intended video encoding frame height (%d) is too small and will be set to (%lld)", mVideoHeight, minFrameHeight);
         mVideoHeight = minFrameHeight;

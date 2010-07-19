@@ -243,6 +243,8 @@ private:
     set_parameters_command& operator=(const set_parameters_command&);
 };
 
+class MediaProfiles;
+
 class AuthorDriver :
 public OsclActiveObject,
 public PVCommandStatusObserver,
@@ -390,6 +392,8 @@ private:
     FILE*       ifpOutput;
     bool iIsInDevice;
     int64_t iMaxFileSize;
+
+    MediaProfiles *mMediaProfiles;
 };
 
 class AuthorDriverWrapper
