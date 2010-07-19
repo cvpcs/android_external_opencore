@@ -26,6 +26,11 @@ ifeq ($(PV_WERROR),1)
     LOCAL_CFLAGS += -Werror
 endif
 
+# Temporary workaround
+ifeq ($(strip $(USE_SHOLES_PROPERTY)),true)
+LOCAL_CFLAGS += -DSHOLES_PROPERTY_OVERRIDES
+endif
+
 LOCAL_C_INCLUDES := $(PV_INCLUDES) \
 	$(PV_TOP)/engines/common/include \
 	$(PV_TOP)/codecs_v2/omx/omx_common/include \
