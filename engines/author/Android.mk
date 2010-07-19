@@ -10,6 +10,10 @@ LOCAL_MODULE := libpvauthorengine
 
 LOCAL_CFLAGS :=   $(PV_CFLAGS)
 
+# Temporary workaround
+ifeq ($(strip $(USE_SHOLES_PROPERTY)),true)
+LOCAL_CFLAGS += -DSHOLES_PROPERTY_OVERRIDES
+endif
 
 LOCAL_STATIC_LIBRARIES := 
 

@@ -1724,7 +1724,11 @@ PVMFStatus PVAuthorEngine::GetPvmfFormatString(PvmfMimeString& aMimeType, const 
     }
     else if (aNodeMimeType == KH264EncMimeType)
     {
+#ifdef SHOLES_PROPERTY_OVERRIDES
+        aMimeType = PVMF_MIME_H264_VIDEO_MP4;
+#else
         aMimeType = PVMF_MIME_ISO_AVC_SAMPLE_FORMAT;
+#endif
     }
     else if (aNodeMimeType == KTextEncMimeType)
     {
