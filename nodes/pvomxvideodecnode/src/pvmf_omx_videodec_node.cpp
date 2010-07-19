@@ -288,12 +288,12 @@ PVMFStatus PVMFOMXVideoDecNode::HandlePortReEnable()
                 {
                     fsiInfo->uid = PVMFYuvFormatSpecificInfo0_UID;
                     fsiInfo->video_format = iYUVFormat;
-                    fsiInfo->viewable_width = iYUVWidth;
-                    fsiInfo->viewable_height = iYUVHeight;
+                    fsiInfo->display_width = iYUVWidth;
+                    fsiInfo->display_height = iYUVHeight;
                     fsiInfo->num_buffers = iNumOutputBuffers;
                     fsiInfo->buffer_size = iOMXComponentOutputBufferSize;
-                    fsiInfo->buffer_width = iStride;
-                    fsiInfo->buffer_height = iSliceHeight;
+                    fsiInfo->width = iStride;
+                    fsiInfo->height = iSliceHeight;
 
                     OsclMemAllocator alloc;
                     int32 KeyLength = oscl_strlen(PVMF_FORMAT_SPECIFIC_INFO_KEY_YUV) + 1;
@@ -1028,12 +1028,12 @@ bool PVMFOMXVideoDecNode::NegotiateComponentParameters(OMX_PTR aOutputParameters
                 {
                     fsiInfo->uid = PVMFYuvFormatSpecificInfo0_UID;
                     fsiInfo->video_format = iYUVFormat;
-                    fsiInfo->viewable_width = iYUVWidth;
-                    fsiInfo->viewable_height = iYUVHeight;
+                    fsiInfo->display_width = iYUVWidth;
+                    fsiInfo->display_height = iYUVHeight;
                     fsiInfo->num_buffers = iNumOutputBuffers;
                     fsiInfo->buffer_size = iOMXComponentOutputBufferSize;
-                    fsiInfo->buffer_width = iStride;
-                    fsiInfo->buffer_height = iSliceHeight;
+                    fsiInfo->width = iStride;
+                    fsiInfo->height = iSliceHeight;
 
                     OsclMemAllocator alloc;
                     int32 KeyLength = oscl_strlen(PVMF_FORMAT_SPECIFIC_INFO_KEY_YUV) + 1;
@@ -1787,12 +1787,12 @@ bool PVMFOMXVideoDecNode::QueueOutputBuffer(OsclSharedPtr<PVMFMediaDataImpl> &me
                 {
                     fsiInfo->uid = PVMFYuvFormatSpecificInfo0_UID;
                     fsiInfo->video_format = iYUVFormat;
-                    fsiInfo->viewable_width = iYUVWidth;
-                    fsiInfo->viewable_height = iYUVHeight;
+                    fsiInfo->display_width = iYUVWidth;
+                    fsiInfo->display_height = iYUVHeight;
                     fsiInfo->num_buffers = 0;
                     fsiInfo->buffer_size = 0;
-                    fsiInfo->buffer_width = iStride;
-                    fsiInfo->buffer_height = iSliceHeight;
+                    fsiInfo->width = iStride;
+                    fsiInfo->height = iSliceHeight;
                     fsiInfo->buffer_size = iOMXComponentOutputBufferSize;
 
                     // NOTE: we first try to send the FSI_YUV key. If the MIO can take it - we're ok.
@@ -3747,10 +3747,10 @@ bool PVMFOMXVideoDecNode::VerifyParametersSync(PvmiMIOSession aSession, PvmiKvp*
                 {
                     fsiInfo->video_format = PVMF_MIME_YUV420;
                     fsiInfo->uid = PVMFYuvFormatSpecificInfo0_UID;
-                    fsiInfo->viewable_width = iNewWidth;
-                    fsiInfo->viewable_height = iNewHeight;
-                    fsiInfo->buffer_width = (iNewWidth + 3) & -4;
-                    fsiInfo->buffer_height = iNewHeight;
+                    fsiInfo->display_width = iNewWidth;
+                    fsiInfo->display_height = iNewHeight;
+                    fsiInfo->width = (iNewWidth + 3) & -4;
+                    fsiInfo->height = iNewHeight;
 
                     if (((PVMFOMXDecPort*)iOutPort)->verifyConnectedPortParametersSync(PVMF_FORMAT_SPECIFIC_INFO_KEY, &yuvFsiMemfrag) != PVMFSuccess)
                     {

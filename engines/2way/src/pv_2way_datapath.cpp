@@ -695,7 +695,7 @@ PVMFStatus CPV2WayDatapath::PortStatusChange(PVMFNodeInterface *aNode,
                         PVMFYuvFormatSpecificInfo0 *yuvInfo = OSCL_NEW(PVMFYuvFormatSpecificInfo0, ());
                         if (yuvInfo != NULL)
                         {
-                            yuvInfo->buffer_height = 176;
+                            yuvInfo->height = 176;
 
                             portParams.key = OSCL_CONST_CAST(char*, PVMF_FORMAT_SPECIFIC_INFO_KEY_YUV);
                             portParams.value.key_specific_value = (OsclAny*)yuvInfo;

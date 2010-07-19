@@ -213,10 +213,10 @@ class PVMFYuvFormatSpecificInfo0
         {
             uid = PVMFYuvFormatSpecificInfo0_UID;
             video_format = PVMF_MIME_FORMAT_UNKNOWN;
-            viewable_width = 0;
-            viewable_height = 0;
-            buffer_width = 0;
-            buffer_height = 0;
+            display_width = 0;
+            display_height = 0;
+            width = 0;
+            height = 0;
             num_buffers = 0;
             buffer_size = 0;
         };
@@ -225,10 +225,10 @@ class PVMFYuvFormatSpecificInfo0
 
         PVUid32 uid;
         PVMFFormatType video_format;
-        uint32 viewable_width;
-        uint32 viewable_height;
-        uint32 buffer_width;
-        uint32 buffer_height;
+        uint32 display_width;
+        uint32 display_height;
+        uint32 width;
+        uint32 height;
 
         uint32 num_buffers;
         uint32 buffer_size;

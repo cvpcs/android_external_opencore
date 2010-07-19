@@ -290,8 +290,8 @@ OSCL_EXPORT_REF void PVMFOMXDecPort::setParametersSync(PvmiMIOSession aSession,
     {
         PVMFYuvFormatSpecificInfo0* yuvInfo = (PVMFYuvFormatSpecificInfo0*)aParameters->value.key_specific_value;
 
-        iDspWidth = (int32)yuvInfo->viewable_width;
-        iDspHeight = (int32)yuvInfo->viewable_height;
+        iDspWidth = (int32)yuvInfo->display_width;
+        iDspHeight = (int32)yuvInfo->display_height;
         return;
     }
 

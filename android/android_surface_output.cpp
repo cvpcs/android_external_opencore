@@ -769,28 +769,28 @@ void AndroidSurfaceOutput::setParametersSync(PvmiMIOSession aSession, PvmiKvp* a
         {
             PVMFYuvFormatSpecificInfo0* yuvInfo = (PVMFYuvFormatSpecificInfo0*)aParameters->value.key_specific_value;
 
-            iVideoWidth = (int32)yuvInfo->buffer_width;
+            iVideoWidth = (int32)yuvInfo->width;
             iVideoParameterFlags |= VIDEO_WIDTH_VALID;
 
             LOGV("iVideoWidth=%d", iVideoWidth);
             PVLOGGER_LOGMSG(PVLOGMSG_INST_LLDBG, iLogger, PVLOGMSG_STACK_TRACE,
                             (0, "AndroidSurfaceOutput::setParametersSync() FSI_YUV Key, Video Width, Value %d", iVideoWidth));
 
-            iVideoHeight = (int32)yuvInfo->buffer_height;
+            iVideoHeight = (int32)yuvInfo->height;
             iVideoParameterFlags |= VIDEO_HEIGHT_VALID;
 
             LOGV("iVideoHeight=%d", iVideoHeight);
             PVLOGGER_LOGMSG(PVLOGMSG_INST_LLDBG, iLogger, PVLOGMSG_STACK_TRACE,
                             (0, "AndroidSurfaceOutput::setParametersSync() FSI_YUV Key, Video Height, Value %d", iVideoHeight));
 
-            iVideoDisplayHeight = (int32)yuvInfo->viewable_height;
+            iVideoDisplayHeight = (int32)yuvInfo->display_height;
             iVideoParameterFlags |= DISPLAY_HEIGHT_VALID;
 
             LOGV("iVideoDisplayHeight=%d", iVideoDisplayHeight);
             PVLOGGER_LOGMSG(PVLOGMSG_INST_LLDBG, iLogger, PVLOGMSG_STACK_TRACE,
                             (0, "AndroidSurfaceOutput::setParametersSync() FSI_YUV Key, Video Display Height, Value %d", iVideoDisplayHeight));
 
-            iVideoDisplayWidth = (int32)yuvInfo->viewable_width;
+            iVideoDisplayWidth = (int32)yuvInfo->display_width;
             iVideoParameterFlags |= DISPLAY_WIDTH_VALID;
 
             LOGV("iVideoDisplayWidth=%d", iVideoDisplayWidth);

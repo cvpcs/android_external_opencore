@@ -284,10 +284,10 @@ PVMFMP4FFParserOutPort::pvmiSetPortFormatSpecificInfoSync(PvmiCapabilityAndConfi
             PVMFYuvFormatSpecificInfo0 *yuvInfo = OSCL_NEW(PVMFYuvFormatSpecificInfo0, ());
             if (yuvInfo != NULL)
             {
-                yuvInfo->viewable_width = displaywidth;
-                yuvInfo->viewable_height = displayheight;
-                yuvInfo->buffer_width = width;
-                yuvInfo->buffer_height = height;
+                yuvInfo->display_width = displaywidth;
+                yuvInfo->display_height = displayheight;
+                yuvInfo->width = width;
+                yuvInfo->height = height;
 
                 OsclMemAllocator alloc;
                 PvmiKvp kvp;

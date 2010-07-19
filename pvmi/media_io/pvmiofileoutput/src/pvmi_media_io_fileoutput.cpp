@@ -1670,9 +1670,9 @@ void PVRefFileOutput::setParametersSync(PvmiMIOSession aSession,
         {
             PVMFYuvFormatSpecificInfo0* yuvInfo = (PVMFYuvFormatSpecificInfo0*)aParameters->value.key_specific_value;
 
-            if (iVideoWidth != (int32)yuvInfo->buffer_width)
+            if (iVideoWidth != (int32)yuvInfo->width)
                 iInitializeAVIDone = false;
-            iVideoWidth = (int32)yuvInfo->buffer_width;
+            iVideoWidth = (int32)yuvInfo->width;
             if (iVideoWidth)
                 iVideoWidthValid = true;
             else
@@ -1680,9 +1680,9 @@ void PVRefFileOutput::setParametersSync(PvmiMIOSession aSession,
             PVLOGGER_LOGMSG(PVLOGMSG_INST_LLDBG, iLogger, PVLOGMSG_STACK_TRACE,
                             (0, "PVRefFileOutput::setParametersSync() Video Width, Value %d", iVideoWidth));
 
-            if (iVideoHeight != (int32)yuvInfo->buffer_height)
+            if (iVideoHeight != (int32)yuvInfo->height)
                 iInitializeAVIDone = false;
-            iVideoHeight = (int32)yuvInfo->buffer_height;
+            iVideoHeight = (int32)yuvInfo->height;
             if (iVideoHeight)
                 iVideoHeightValid = true;
             else
@@ -1690,9 +1690,9 @@ void PVRefFileOutput::setParametersSync(PvmiMIOSession aSession,
             PVLOGGER_LOGMSG(PVLOGMSG_INST_LLDBG, iLogger, PVLOGMSG_STACK_TRACE,
                             (0, "PVRefFileOutput::setParametersSync() Video Height, Value %d", iVideoHeight));
 
-            if (iVideoDisplayHeight != (int32)yuvInfo->viewable_height)
+            if (iVideoDisplayHeight != (int32)yuvInfo->display_height)
                 iInitializeAVIDone = false;
-            iVideoDisplayHeight = (int32)yuvInfo->viewable_height;
+            iVideoDisplayHeight = (int32)yuvInfo->display_height;
             if (iVideoDisplayHeight)
                 iVideoDisplayHeightValid = true;
             else
@@ -1701,9 +1701,9 @@ void PVRefFileOutput::setParametersSync(PvmiMIOSession aSession,
                             (0, "PVRefFileOutput::setParametersSync() Video Display Height, Value %d", iVideoDisplayHeight));
 
 
-            if (iVideoDisplayWidth != (int32)yuvInfo->viewable_width)
+            if (iVideoDisplayWidth != (int32)yuvInfo->display_width)
                 iInitializeAVIDone = false;
-            iVideoDisplayWidth = (int32)yuvInfo->viewable_width;
+            iVideoDisplayWidth = (int32)yuvInfo->display_width;
             if (iVideoDisplayWidth)
                 iVideoDisplayWidthValid = true;
             else
