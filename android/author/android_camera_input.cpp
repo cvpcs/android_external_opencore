@@ -1111,7 +1111,7 @@ PVMFStatus AndroidCameraInput::DoInit()
     if (mCamera->setParameters(s) != NO_ERROR)
     {
         LOGE("Failed to set camera(%p) parameters", mCamera.get());
-        return PVMFFailure;
+        //return PVMFFailure;
     }
 
     // Since we may not honor the preview size that app has requested
